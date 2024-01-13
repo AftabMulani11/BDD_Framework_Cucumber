@@ -7,3 +7,4 @@ Feature: JALA Technology Login test
     And Click on Remember me button
     And Click on Sign in button
     Then User validate the Dashboard
+    And User click on Logout button

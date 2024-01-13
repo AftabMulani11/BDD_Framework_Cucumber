@@ -40,6 +40,7 @@ public class LoginPage {
     }
 
     public void setDriver(){
+    	
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(option);
@@ -49,6 +50,14 @@ public class LoginPage {
 
     public String Title(){
         return driver.getTitle();
+    }
+
+    public void logout() {
+        driver.findElement(By.xpath("//a[@class='dropdown-toggle p-22']")).click();
+    }
+
+    public void exit(){
+        driver.quit();
     }
 
 }

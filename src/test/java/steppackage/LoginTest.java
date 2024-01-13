@@ -9,18 +9,14 @@ public class LoginTest {
     private WebDriver driver;
     private LoginPage log;
 
-    public LoginTest(WebDriver driver) {
-        this.driver = driver;
+    public LoginTest(){
+        //driver = null;
+        //log = null;
     }
 
-    public void exit(){
-        if(driver!=null) {
-            driver.quit();
-        }
-    }
+    
 
     @Given("User already on Login Page")
-    @Before
     public void  User_already_on_Login_Page(){
         log = new LoginPage(driver);
         log.setDriver();
@@ -34,7 +30,7 @@ public class LoginTest {
         log.enterpassword("jobprogram");
 		Thread.sleep(500);
     }
-    @And("Click on Remember me button")
+    @And("^Click on Remember me button$")
     public void click_on_remember_me_button() throws InterruptedException{
         log.rememberButton();
 		Thread.sleep(500);
@@ -51,6 +47,11 @@ public class LoginTest {
         String title = log.Title();
         Assert.assertEquals("Magnus", title);
         Thread.sleep(500);
-        exit();
     }
+    @Then("User click on Logout button")
+    public void user_click_on_logout_button() throws InterruptedException{
+        log.logout();
+        Thread.sleep(500);
+        log.exit();
+}
 }
